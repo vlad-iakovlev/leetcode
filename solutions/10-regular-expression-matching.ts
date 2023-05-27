@@ -1,18 +1,29 @@
-function isMatch(s: string, p: string, sidx = 0, pidx = 0): boolean {
-    for (; pidx < p.length; pidx++) {
-        if (p[pidx] === '*') {
-            const char = p[pidx - 1]
-            while (sidx < s.length && (char === '.' || s[sidx] === char)) {
-                if (isMatch(s, p, sidx, pidx + 1)) return true
-                sidx++
+function isMatch(s: string, p: string): boolean {
+    const n = s.length
+    const m = p.length
+
+    const dp = Array<boolean[]>(n + 1)
+    for (let i = 0; i <= n; i++) dp[i] = Array(m + 1)
+    dp[0][0] = true
+
+    for (let i = 0; i <= n; i++) {
+        for (let j = 1; j <= m; j++) {
+            if (p[j - 1] === '*') {
+                dp[i][j] =
+                    dp[i][j - 2] ||
+                    (
+                        i > 0 &&
+                        (p[j - 2] === '.' || s[i - 1] === p[j - 2]) &&
+                        dp[i - 1][j]
+                    )
+            } else {
+                dp[i][j] =
+                    i > 0 &&
+                    dp[i - 1][j - 1] &&
+                    (p[j - 1] === '.' || s[i - 1] === p[j - 1])
             }
-            continue
         }
-        
-        if (p[pidx + 1] === '*') continue
-        if (sidx >= s.length || (p[pidx] !== '.' && p[pidx] !== s[sidx])) return false
-        sidx++
     }
 
-    return sidx === s.length
+    return dp[n][m] ?? false
 }
