@@ -1,29 +1,23 @@
 function trap(height: number[]): number {
     let l = 0
     let r = height.length - 1
-    let lv = height[l]
-    let rv = height[r]
+    let ll = l
+    let rr = r
     let result = 0
 
     while (l < r) {
-        const lh = height[l]
-        if (lh < lv) {
-            result += lv - lh
+        if (height[l] < height[ll]) {
+            result += height[ll] - height[l]
             l++
-            continue
-        }
-
-        const rh = height[r]
-        if (rh < rv) {
-            result += rv - rh
+        } else if (height[r] < height[rr]) {
+            result += height[rr] - height[r]
             r--
-            continue
+        } else {
+            if (height[l] > height[ll]) ll = l
+            if (height[r] > height[rr]) rr = r
+
+            if (height[ll] > height[rr]) r--; else l++
         }
-
-        if (lh > lv) lv = lh
-        if (rh > rv) rv = rh
-
-        if (lv > rv) r--; else l++
     }
 
     return result
