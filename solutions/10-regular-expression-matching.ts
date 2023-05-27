@@ -2,28 +2,27 @@ function isMatch(s: string, p: string): boolean {
     const n = s.length
     const m = p.length
 
-    const dp = Array<boolean[]>(n + 1)
-    for (let i = 0; i <= n; i++) dp[i] = Array(m + 1)
-    dp[0][0] = true
+    const dp = Array<boolean>((n + 1) * (m + 1))
+    const k = (i: number, j: number) => i * (m + 1) + j
+    dp[k(0, 0)] = true
 
     for (let i = 0; i <= n; i++) {
         for (let j = 1; j <= m; j++) {
-            if (p[j - 1] === '*') {
-                dp[i][j] =
-                    dp[i][j - 2] ||
+            dp[k(i, j)] =
+                p[j - 1] === '*' ? (
+                    dp[k(i, j - 2)] ||
                     (
                         i > 0 &&
                         (p[j - 2] === '.' || s[i - 1] === p[j - 2]) &&
-                        dp[i - 1][j]
+                        dp[k(i - 1, j)]
                     )
-            } else {
-                dp[i][j] =
+                ) : (
                     i > 0 &&
-                    dp[i - 1][j - 1] &&
+                    dp[k(i - 1, j - 1)] &&
                     (p[j - 1] === '.' || s[i - 1] === p[j - 1])
-            }
+                )
         }
     }
 
-    return dp[n][m] ?? false
+    return dp[k(n, m)] ?? false
 }
