@@ -1,13 +1,12 @@
 function search(nums: number[], target: number): number {
     const s = nums[0]
     const e = nums[nums.length - 1]
-    if (s <= e) return bs(nums, target, -1e5, 1e5)
-    if (target >= s) return bs(nums, target, s, 1e5)
-    if (target <= e) return bs(nums, target, -1e5, e)
-    return -1
-}
 
-function bs(nums: number[], target: number, min: number, max: number): number {
+    let min = -1e5
+    let max = 1e5
+    if (s > e && target >= s) min = s
+    if (s > e && target <= e) max = e
+
     let l = 0
     let r = nums.length - 1
 
