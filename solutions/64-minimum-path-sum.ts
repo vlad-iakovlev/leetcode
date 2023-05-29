@@ -8,8 +8,10 @@ function minPathSum(grid: number[][]): number {
     }
 
     for (let i = 1; i < m; i++) {
-        for (let j = 0; j < n; j++) {
-            if (j > 0 && dp[j - 1] < dp[j]) dp[j] = dp[j - 1]
+        dp[0] += grid[i][0]
+
+        for (let j = 1; j < n; j++) {
+            if (dp[j - 1] < dp[j]) dp[j] = dp[j - 1]
             dp[j] += grid[i][j]
         }
     }
