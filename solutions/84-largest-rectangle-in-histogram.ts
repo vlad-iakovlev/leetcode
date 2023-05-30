@@ -17,8 +17,6 @@ function largestRectangleArea(height: number[]): number {
         rb[i] = p
     }
 
-    console.log(lb, rb)
-
     let max = 0
     for (let i = 0; i < n; i++) {
         const area = height[i] * (rb[i] - lb[i] - 1)
