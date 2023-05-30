@@ -12,14 +12,13 @@
  * }
  */
 
-function isValidBST(root: TreeNode | null, min = -1e10, max = 1e10): boolean {
+function isValidBST(root: TreeNode | null, min?: number, max?: number): boolean {
+    if (!root) return true
+
     return (
-        !root ||
-        (
-            root.val > min &&
-            root.val < max &&
-            isValidBST(root.left, min, root.val) &&
-            isValidBST(root.right, root.val, max)
-        )
+        (min == null || root.val > min) &&
+        (max == null || root.val < max) &&
+        isValidBST(root.left, min, root.val) &&
+        isValidBST(root.right, root.val, max)
     )
 }
