@@ -3,13 +3,7 @@ function subsets(nums: number[]): number[][] {
     const result = Array<number[]>(n)
     
     for (let i = 0; i < n; i++) {
-        const item: number[] = []
-
-        for (let j = 0; j < nums.length; j++) {
-            if (i & (1 << j)) item.push(nums[j])
-        }
-
-        result[i] = item
+        result[i] = nums.filter((_, j) => i & (1 << j))
     }
 
     return result
