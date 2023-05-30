@@ -14,18 +14,17 @@
 
 function levelOrderBottom(root: TreeNode | null): number[][] {
     const result: number[][] = []
-    const deq = Array<[number, TreeNode | null]>([0, root])
 
-    while (deq.length) {
-        const [level, node] = deq.shift()
-
+    function traverse(node: TreeNode | null, level: number) {
         if (node) {
             if (result[level]) result[level].push(node.val)
             else result[level] = [node.val]
-            deq.push([level + 1, node.left], [level + 1, node.right])
+            traverse(node.left, level + 1)
+            traverse(node.right, level + 1)
         }
     }
 
+    traverse(root, 0)
     result.reverse()
 
     return result
