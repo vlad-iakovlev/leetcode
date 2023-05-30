@@ -15,7 +15,7 @@ function removeNthFromEnd(
     n: number
 ): ListNode | null {
     return removeNthFronEndInternal(head, n).head
-};
+}
 
 function removeNthFronEndInternal(
     head: ListNode | null,

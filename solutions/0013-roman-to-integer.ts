@@ -10,7 +10,7 @@ const literals: Record<string, number> = {
 
 function romanToInt(s: string): number {
     let num = 0
-    
+
     for (let i = 0; i < s.length; i++) {
         if (literals[s[i]] < literals[s[i + 1]]) {
             num -= literals[s[i]]
@@ -18,6 +18,6 @@ function romanToInt(s: string): number {
             num += literals[s[i]]
         }
     }
-    
+
     return num
-};
+}

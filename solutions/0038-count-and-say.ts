@@ -1,4 +1,4 @@
-const cache: Record<number, string> = { 1: '1'} 
+const cache: Record<number, string> = { 1: '1'}
 
 function countAndSay(n: number): string {
     if (cache[n]) return cache[n]
@@ -22,4 +22,4 @@ function countAndSay(n: number): string {
     cache[n] = result
 
     return result
-};
+}

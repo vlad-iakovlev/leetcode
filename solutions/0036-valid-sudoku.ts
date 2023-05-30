@@ -2,7 +2,7 @@ function isValidSudoku(board: string[][]): boolean {
     let rows: number[] = []
     let cols: number[] = []
     let boxes: number[] = []
-    
+
     for (let row = 0; row < 9; row++) {
         for (let col = 0; col < 9; col++) {
             if (board[row][col] === '.') continue
@@ -22,4 +22,4 @@ function isValidSudoku(board: string[][]): boolean {
     }
 
     return true
-};
+}

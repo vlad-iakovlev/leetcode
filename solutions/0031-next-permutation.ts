@@ -6,7 +6,7 @@ function nextPermutation(nums: number[]): void {
     for (; i >= 0 && nums[i] >= nums[i + 1]; i--) {}
 
     if (i >= 0) {
-        let j = i;
+        let j = i
         for (; j < nums.length - 1 && nums[j + 1] > nums[i]; j++) {}
         const val = nums[i]
         nums[i] = nums[j]

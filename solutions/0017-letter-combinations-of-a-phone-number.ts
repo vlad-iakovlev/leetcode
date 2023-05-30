@@ -10,7 +10,7 @@ const digitsToLetters = {
 }
 
 function letterCombinations(digits: string): string[] {
-    if (!digits) return [];
+    if (!digits) return []
 
     const result = ['']
 

@@ -4,7 +4,7 @@ function removeDuplicates(nums: number[]): number {
     while (i < nums.length) {
         const val = nums[i]
         nums[len++] = val
-        while (nums[++i] === val);
+        while (nums[++i] === val) {}
     }
     return len
 }

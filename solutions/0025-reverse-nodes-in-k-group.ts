@@ -11,7 +11,7 @@
  */
 
 function reverseKGroup(head: ListNode | null, k: number): ListNode | null {
-    if (!head) return null;
+    if (!head) return null
 
     let next = head
     for (let i = 0; i < k - 1; i++) {
