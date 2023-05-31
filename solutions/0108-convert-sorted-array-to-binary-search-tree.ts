@@ -14,13 +14,9 @@
 
 function sortedArrayToBST(nums: number[]): TreeNode | null {
     function genBST(l: number, r: number) {
+        if (l >= r) return null
         const m = Math.floor((l + r) / 2)
-
-        return new TreeNode(
-            nums[m],
-            l < m ? genBST(l, m) : null,
-            m + 1 < r ? genBST(m + 1, r) : null,
-        )
+        return new TreeNode(nums[m], genBST(l, m), genBST(m + 1, r))
     }
 
     return genBST(0, nums.length)
