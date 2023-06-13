@@ -1,16 +1,16 @@
 function equalPairs(grid: number[][]): number {
     const n = grid.length
-    let result = 0
-    
-    for (let i = 0; i < n; i++) {
-        for (let j = 0; j < n; j++) {
-            let match = true
-            for (let k = 0; match && k < n; k++) {
-                match = grid[i][k] === grid[k][j]
-            }
 
-            if (match) result++
-        }
+    const map: Record<string, number> = {}
+    for (let i = 0; i < n; i++) {
+        const row = grid[i].join(',')
+        map[row] = (map[row] ?? 0) + 1
+    }
+
+    let result = 0
+    for (let i = 0; i < n; i++) {
+        const col = grid.map(row => row[i]).join(',')
+        result += map[col] ?? 0
     }
 
     return result
