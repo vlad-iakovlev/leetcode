@@ -11,13 +11,13 @@
  */
 
 function detectCycle(head: ListNode | null): ListNode | null {
-    const visited = new Set<ListNode>()
+  const visited = new Set<ListNode>();
 
-    while (head) {
-        if (visited.has(head)) return head
-        visited.add(head)
-        head = head.next
-    }
+  while (head) {
+    if (visited.has(head)) return head;
+    visited.add(head);
+    head = head.next;
+  }
 
-    return null   
+  return null;
 }

@@ -13,18 +13,18 @@
  */
 
 function buildTree(inorder: number[], postorder: number[]): TreeNode | null {
-    let pi = postorder.length - 1
+  let pi = postorder.length - 1;
 
-    function build(l: number, r: number): TreeNode | null {
-        if (l === r) return null
+  function build(l: number, r: number): TreeNode | null {
+    if (l === r) return null;
 
-        const val = postorder[pi--]
-        const i = inorder.indexOf(val)
-        const right = build(i + 1, r)
-        const left = build(l, i)
+    const val = postorder[pi--];
+    const i = inorder.indexOf(val);
+    const right = build(i + 1, r);
+    const left = build(l, i);
 
-        return new TreeNode(val, left, right)
-    }
+    return new TreeNode(val, left, right);
+  }
 
-    return build(0, inorder.length)
+  return build(0, inorder.length);
 }

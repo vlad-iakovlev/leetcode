@@ -13,22 +13,22 @@
  */
 
 function sumNumbers(root: TreeNode | null): number {
-    if (!root) return 0
+  if (!root) return 0;
 
-    let result = 0
+  let result = 0;
 
-    function traverse(node: TreeNode, num: number) {
-        num = num * 10 + node.val
-        
-        if (!node.left && !node.right) {
-            result += num
-        } else {
-            if (node.left) traverse(node.left, num) 
-            if (node.right) traverse(node.right, num)
-        }
+  function traverse(node: TreeNode, num: number) {
+    num = num * 10 + node.val;
+
+    if (!node.left && !node.right) {
+      result += num;
+    } else {
+      if (node.left) traverse(node.left, num);
+      if (node.right) traverse(node.right, num);
     }
+  }
 
-    traverse(root, 0)
+  traverse(root, 0);
 
-    return result
+  return result;
 }

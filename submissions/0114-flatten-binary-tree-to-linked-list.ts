@@ -13,16 +13,16 @@
  */
 
 function flatten(root: TreeNode | null): void {
-    let prev: TreeNode | null = null
+  let prev: TreeNode | null = null;
 
-    function traverse(node: TreeNode | null): void {
-        if (!node) return
-        traverse(node.right)
-        traverse(node.left)
-        node.right = prev
-        node.left = null
-        prev = node
-    }
+  function traverse(node: TreeNode | null): void {
+    if (!node) return;
+    traverse(node.right);
+    traverse(node.left);
+    node.right = prev;
+    node.left = null;
+    prev = node;
+  }
 
-    traverse(root)
+  traverse(root);
 }

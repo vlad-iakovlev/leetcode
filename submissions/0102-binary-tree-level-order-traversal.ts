@@ -13,18 +13,18 @@
  */
 
 function levelOrder(root: TreeNode | null): number[][] {
-    const result: number[][] = []
+  const result: number[][] = [];
 
-    function traverse(node: TreeNode | null, level: number) {
-        if (node) {
-            if (result[level]) result[level].push(node.val)
-            else result[level] = [node.val]
-            traverse(node.left, level + 1)
-            traverse(node.right, level + 1)
-        }
+  function traverse(node: TreeNode | null, level: number) {
+    if (node) {
+      if (result[level]) result[level].push(node.val);
+      else result[level] = [node.val];
+      traverse(node.left, level + 1);
+      traverse(node.right, level + 1);
     }
+  }
 
-    traverse(root, 0)
+  traverse(root, 0);
 
-    return result
+  return result;
 }

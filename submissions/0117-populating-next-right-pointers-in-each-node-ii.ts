@@ -15,21 +15,21 @@
  */
 
 function connect(root: Node | null): Node | null {
-    function traverse(nodes: Array<Node | null>) {
-        nodes = nodes.filter(Boolean)
-        if (!nodes.length) return
+  function traverse(nodes: Array<Node | null>) {
+    nodes = nodes.filter(Boolean);
+    if (!nodes.length) return;
 
-        const nextNodes: Array<Node | null> = []
+    const nextNodes: Array<Node | null> = [];
 
-        for (let i = 0; i < nodes.length; i++) {
-            nodes[i].next = nodes[i + 1] ?? null
-            nextNodes.push(nodes[i].left, nodes[i].right)
-        }
-
-        traverse(nextNodes)
+    for (let i = 0; i < nodes.length; i++) {
+      nodes[i].next = nodes[i + 1] ?? null;
+      nextNodes.push(nodes[i].left, nodes[i].right);
     }
 
-    traverse([root])
+    traverse(nextNodes);
+  }
 
-    return root
+  traverse([root]);
+
+  return root;
 }

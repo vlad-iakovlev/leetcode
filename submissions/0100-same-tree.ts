@@ -13,14 +13,14 @@
  */
 
 function isSameTree(p: TreeNode | null, q: TreeNode | null): boolean {
-    const deq = Array<[TreeNode | null, TreeNode | null]>([p, q])
+  const deq = Array<[TreeNode | null, TreeNode | null]>([p, q]);
 
-    while (deq.length) {
-        const [p, q] = deq.pop()
-        if (!p && !q) continue
-        if (!p || !q || p.val !== q.val) return false
-        deq.push([p.left, q.left], [p.right, q.right])
-    }
+  while (deq.length) {
+    const [p, q] = deq.pop();
+    if (!p && !q) continue;
+    if (!p || !q || p.val !== q.val) return false;
+    deq.push([p.left, q.left], [p.right, q.right]);
+  }
 
-    return true
+  return true;
 }

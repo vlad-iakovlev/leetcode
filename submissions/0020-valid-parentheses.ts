@@ -1,16 +1,16 @@
-const o = ['(', '{', '[']
-const c = [')', '}', ']']
+const o = ["(", "{", "["];
+const c = [")", "}", "]"];
 
 function isValid(s: string): boolean {
-    const stack: number[] = []
+  const stack: number[] = [];
 
-    for (let i = 0; i < s.length; i++) {
-        const oidx = o.indexOf(s[i])
-        const cidx = c.indexOf(s[i])
+  for (let i = 0; i < s.length; i++) {
+    const oidx = o.indexOf(s[i]);
+    const cidx = c.indexOf(s[i]);
 
-        if (oidx >= 0) stack.push(oidx)
-        if (cidx >= 0 && stack.pop() !== cidx) return false
-    }
+    if (oidx >= 0) stack.push(oidx);
+    if (cidx >= 0 && stack.pop() !== cidx) return false;
+  }
 
-    return stack.length === 0
+  return stack.length === 0;
 }

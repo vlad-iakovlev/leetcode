@@ -11,16 +11,16 @@
  */
 
 function deleteDuplicates(head: ListNode | null): ListNode | null {
-    if (!head) return head
+  if (!head) return head;
 
-    if (head.val === head.next?.val) {
-        while (head.val === head.next?.val) {
-            head = head.next
-        }
-
-        return deleteDuplicates(head.next)
+  if (head.val === head.next?.val) {
+    while (head.val === head.next?.val) {
+      head = head.next;
     }
 
-    head.next = deleteDuplicates(head.next)
-    return head
+    return deleteDuplicates(head.next);
+  }
+
+  head.next = deleteDuplicates(head.next);
+  return head;
 }

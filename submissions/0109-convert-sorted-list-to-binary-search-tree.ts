@@ -25,21 +25,21 @@
  */
 
 function sortedListToBST(head: ListNode | null): TreeNode | null {
-    const nodes: TreeNode[] = []
+  const nodes: TreeNode[] = [];
 
-    while (head) {
-        nodes.push(new TreeNode(head.val))
-        head = head.next
-    }
+  while (head) {
+    nodes.push(new TreeNode(head.val));
+    head = head.next;
+  }
 
-    function genBST(l: number, r: number) {
-        if (l >= r) return null
-        const m = Math.floor((l + r) / 2)
-        const node = nodes[m]
-        node.left = genBST(l, m)
-        node.right = genBST(m + 1, r)
-        return node
-    }
+  function genBST(l: number, r: number) {
+    if (l >= r) return null;
+    const m = Math.floor((l + r) / 2);
+    const node = nodes[m];
+    node.left = genBST(l, m);
+    node.right = genBST(m + 1, r);
+    return node;
+  }
 
-    return genBST(0, nodes.length)
+  return genBST(0, nodes.length);
 }

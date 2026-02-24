@@ -13,16 +13,16 @@
  */
 
 function postorderTraversal(root: TreeNode | null): number[] {
-    const result: number[] = []
-    
-    function traverse(node: TreeNode | null): void {
-        if (!node) return
-        traverse(node.left)
-        traverse(node.right)
-        result.push(node.val)
-    }
-    
-    traverse(root)
-    
-    return result
+  const result: number[] = [];
+
+  function traverse(node: TreeNode | null): void {
+    if (!node) return;
+    traverse(node.left);
+    traverse(node.right);
+    result.push(node.val);
+  }
+
+  traverse(root);
+
+  return result;
 }

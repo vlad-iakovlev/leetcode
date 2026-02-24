@@ -13,17 +13,17 @@
  */
 
 function copyRandomList(head: Node | null): Node | null {
-    const dp = new Map<Node | null, Node | null>()
-    dp.set(null, null)
+  const dp = new Map<Node | null, Node | null>();
+  dp.set(null, null);
 
-    for (let node = head; node; node = node.next) {
-        dp.set(node, new Node(node.val))
-    }
+  for (let node = head; node; node = node.next) {
+    dp.set(node, new Node(node.val));
+  }
 
-    for (let node = head; node; node = node.next) {
-        dp.get(node).next = dp.get(node.next)
-        dp.get(node).random = dp.get(node.random)
-    }
+  for (let node = head; node; node = node.next) {
+    dp.get(node).next = dp.get(node.next);
+    dp.get(node).random = dp.get(node.random);
+  }
 
-    return dp.get(head)
+  return dp.get(head);
 }

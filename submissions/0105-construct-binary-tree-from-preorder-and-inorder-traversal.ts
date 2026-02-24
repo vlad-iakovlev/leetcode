@@ -13,16 +13,16 @@
  */
 
 function buildTree(preorder: number[], inorder: number[]): TreeNode | null {
-    let pi = 0
+  let pi = 0;
 
-    function build(l: number, r: number): TreeNode | null {
-        if (l === r) return null
+  function build(l: number, r: number): TreeNode | null {
+    if (l === r) return null;
 
-        const val = preorder[pi++]
-        const i = inorder.indexOf(val)
+    const val = preorder[pi++];
+    const i = inorder.indexOf(val);
 
-        return new TreeNode(val, build(l, i), build(i + 1, r))
-    }
+    return new TreeNode(val, build(l, i), build(i + 1, r));
+  }
 
-    return build(0, inorder.length)
+  return build(0, inorder.length);
 }

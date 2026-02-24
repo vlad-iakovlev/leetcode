@@ -13,18 +13,18 @@
  */
 
 function getMinimumDifference(root: TreeNode | null): number {
-    let min = 1e6
-    let prev: TreeNode | null = null
-    
-    function traverse(node: TreeNode | null) {
-        if (!node || min === 1) return
-        traverse(node.left)
-        if (prev) min = Math.min(min, Math.abs(node.val - prev.val))
-        prev = node
-        traverse(node.right)
-    }
+  let min = 1e6;
+  let prev: TreeNode | null = null;
 
-    traverse(root)
+  function traverse(node: TreeNode | null) {
+    if (!node || min === 1) return;
+    traverse(node.left);
+    if (prev) min = Math.min(min, Math.abs(node.val - prev.val));
+    prev = node;
+    traverse(node.right);
+  }
 
-    return min
+  traverse(root);
+
+  return min;
 }

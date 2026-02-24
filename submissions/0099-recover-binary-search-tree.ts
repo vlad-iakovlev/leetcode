@@ -13,26 +13,26 @@
  */
 
 function recoverTree(root: TreeNode | null): void {
-    let first: TreeNode | null = null
-    let second: TreeNode | null = null
-    let prev = new TreeNode(-Infinity)
+  let first: TreeNode | null = null;
+  let second: TreeNode | null = null;
+  let prev = new TreeNode(-Infinity);
 
-    function traverse(root: TreeNode | null): void {
-        if (!root) return
-        
-        traverse(root.left)
+  function traverse(root: TreeNode | null): void {
+    if (!root) return;
 
-        if (prev.val >= root.val) {
-            if (!first) first = prev
-            second = root
-        }
-        prev = root
+    traverse(root.left);
 
-        traverse(root.right)
+    if (prev.val >= root.val) {
+      if (!first) first = prev;
+      second = root;
     }
+    prev = root;
 
-    traverse(root)
-    const val = first.val
-    first.val = second.val
-    second.val = val
+    traverse(root.right);
+  }
+
+  traverse(root);
+  const val = first.val;
+  first.val = second.val;
+  second.val = val;
 }

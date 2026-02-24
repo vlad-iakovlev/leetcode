@@ -13,19 +13,20 @@
  */
 
 function pathSum(root: TreeNode | null, targetSum: number): number[][] {
-    const result: number[][] = []
-    const item: number[] = []
+  const result: number[][] = [];
+  const item: number[] = [];
 
-    function traverse(node: TreeNode | null, target: number): void {
-        if (!node) return
-        item.push(node.val)
-        if (!node.left && !node.right && node.val === target) result.push([...item])
-        traverse(node.left, target - node.val)
-        traverse(node.right, target - node.val)
-        item.pop()
-    }
+  function traverse(node: TreeNode | null, target: number): void {
+    if (!node) return;
+    item.push(node.val);
+    if (!node.left && !node.right && node.val === target)
+      result.push([...item]);
+    traverse(node.left, target - node.val);
+    traverse(node.right, target - node.val);
+    item.pop();
+  }
 
-    traverse(root, targetSum)
+  traverse(root, targetSum);
 
-    return result
+  return result;
 }

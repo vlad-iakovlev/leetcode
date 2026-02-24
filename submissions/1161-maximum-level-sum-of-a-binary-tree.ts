@@ -13,18 +13,18 @@
  */
 
 function maxLevelSum(root: TreeNode | null): number {
-    const dp: number[] = []
+  const dp: number[] = [];
 
-    function dfs(node: TreeNode | null, level: number): void {
-        if (!node) return
+  function dfs(node: TreeNode | null, level: number): void {
+    if (!node) return;
 
-        dp[level] = (dp[level] ?? 0) + node.val
+    dp[level] = (dp[level] ?? 0) + node.val;
 
-        dfs(node.left, level + 1)
-        dfs(node.right, level + 1)
-    }
+    dfs(node.left, level + 1);
+    dfs(node.right, level + 1);
+  }
 
-    dfs(root, 0)
+  dfs(root, 0);
 
-    return dp.indexOf(Math.max(...dp)) + 1
+  return dp.indexOf(Math.max(...dp)) + 1;
 }

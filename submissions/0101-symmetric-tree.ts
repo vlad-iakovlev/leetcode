@@ -13,16 +13,19 @@
  */
 
 function isSymmetric(root: TreeNode | null): boolean {
-    if (!root) return true
-    
-    const deq = Array<[TreeNode | null, TreeNode | null]>([root.left, root.right])
+  if (!root) return true;
 
-    while (deq.length) {
-        const [l, r] = deq.pop()
-        if (!l && !r) continue
-        if (!l || !r || l.val !== r.val) return false
-        deq.push([l.left, r.right], [l.right, r.left])
-    }
+  const deq = Array<[TreeNode | null, TreeNode | null]>([
+    root.left,
+    root.right,
+  ]);
 
-    return true
+  while (deq.length) {
+    const [l, r] = deq.pop();
+    if (!l && !r) continue;
+    if (!l || !r || l.val !== r.val) return false;
+    deq.push([l.left, r.right], [l.right, r.left]);
+  }
+
+  return true;
 }

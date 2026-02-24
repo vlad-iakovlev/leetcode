@@ -13,12 +13,12 @@
  */
 
 function isBalanced(root: TreeNode | null): boolean {
-    if (!root) return true
-    if (Math.abs(getDepth(root.left) - getDepth(root.right)) > 1) return false
-    return isBalanced(root.left) && isBalanced(root.right)
+  if (!root) return true;
+  if (Math.abs(getDepth(root.left) - getDepth(root.right)) > 1) return false;
+  return isBalanced(root.left) && isBalanced(root.right);
 }
 
 function getDepth(root: TreeNode | null): number {
-    if (!root) return 0
-    return Math.max(getDepth(root.left), getDepth(root.right)) + 1
+  if (!root) return 0;
+  return Math.max(getDepth(root.left), getDepth(root.right)) + 1;
 }

@@ -15,19 +15,19 @@
  */
 
 function connect(root: Node | null): Node | null {
-    function traverse(nodes: Array<Node | null>) {
-        const nextNodes: Array<Node | null> = []
+  function traverse(nodes: Array<Node | null>) {
+    const nextNodes: Array<Node | null> = [];
 
-        for (let i = 0; i < nodes.length; i++) {
-            if (!nodes[i]) return
-            nodes[i].next = nodes[i + 1] ?? null
-            nextNodes.push(nodes[i].left, nodes[i].right)
-        }
-
-        traverse(nextNodes)
+    for (let i = 0; i < nodes.length; i++) {
+      if (!nodes[i]) return;
+      nodes[i].next = nodes[i + 1] ?? null;
+      nextNodes.push(nodes[i].left, nodes[i].right);
     }
 
-    traverse([root])
+    traverse(nextNodes);
+  }
 
-    return root
+  traverse([root]);
+
+  return root;
 }

@@ -13,21 +13,21 @@
  */
 
 function generateTrees(n: number): Array<TreeNode | null> {
-    return generate(1, n)
+  return generate(1, n);
 }
 
 function generate(l: number, r: number): Array<TreeNode | null> {
-    if (l > r) return [null]
+  if (l > r) return [null];
 
-    const result: Array<TreeNode | null> = []
+  const result: Array<TreeNode | null> = [];
 
-    for (let i = l; i <= r; i++) {
-        const lls = generate(l, i - 1)
-        const rrs = generate(i + 1, r)
+  for (let i = l; i <= r; i++) {
+    const lls = generate(l, i - 1);
+    const rrs = generate(i + 1, r);
 
-        for (const ll of lls)
-        for (const rr of rrs) result.push(new TreeNode(i, ll, rr))
-    }
+    for (const ll of lls)
+      for (const rr of rrs) result.push(new TreeNode(i, ll, rr));
+  }
 
-    return result
+  return result;
 }

@@ -1,22 +1,22 @@
 function lengthOfLongestSubstring(s: string): number {
-    let maxLen = 0
+  let maxLen = 0;
 
-    let i = 0
-    let j = 0
+  let i = 0;
+  let j = 0;
 
-    while (i < s.length, j < s.length) {
-        const substr = s.slice(i, j)
+  while ((i < s.length, j < s.length)) {
+    const substr = s.slice(i, j);
 
-        if (substr.includes(s[j])) {
-            i++
-        } else {
-            if (maxLen < substr.length + 1) {
-                maxLen = substr.length + 1
-            }
+    if (substr.includes(s[j])) {
+      i++;
+    } else {
+      if (maxLen < substr.length + 1) {
+        maxLen = substr.length + 1;
+      }
 
-            j++
-        }
+      j++;
     }
+  }
 
-    return maxLen
+  return maxLen;
 }
