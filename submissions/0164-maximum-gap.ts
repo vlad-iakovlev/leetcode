@@ -11,7 +11,7 @@ function maximumGap(nums: number[]): number {
 
 function radixSort(nums: number[]): number[] {
   const maxVal = Math.max(...nums);
-  const maxExp = Math.floor(Math.log2(maxVal));
+  const maxExp = Math.log2(maxVal);
 
   for (let exp = 0; exp <= maxExp; exp += 4) {
     nums = countSort(nums, exp);
