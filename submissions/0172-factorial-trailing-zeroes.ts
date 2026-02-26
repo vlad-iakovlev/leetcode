@@ -1,0 +1,9 @@
+function trailingZeroes(n: number): number {
+  let count = 0;
+  while (n >= 5) {
+    n = Math.trunc(n / 5);
+    count += n;
+  }
+
+  return count;
+}
