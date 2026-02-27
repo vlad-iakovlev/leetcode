@@ -15,7 +15,7 @@ function minOperations(s: string, k: number): number {
       Math.ceil(zero / k),
       Math.ceil((s.length - zero) / (s.length - k)),
     );
-    res = Math.min(res, odd + isEven(odd));
+    res = odd + isEven(odd);
   }
 
   if (isEven(zero)) {
